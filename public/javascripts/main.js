@@ -4,10 +4,12 @@ var angular = require("angular");
 require('angular-router-browserify')(angular);
 
 var indexPage = require("./pages/index");
+var mappackSettingsPage = require("./pages/mappack/settings");
 
 angular.module("pumpkin", [
     "ngRoute",
-    indexPage.name
+    indexPage.name,
+    mappackSettingsPage.name
 ])
     .config(["$routeProvider", require("./routes")])
     .run(function($rootScope, $http){

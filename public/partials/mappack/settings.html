@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="col-md-12">
+        <h2>Settings for {{mappack.id}}</h2>
+        <form class="form-horizontal well no-bottom-padding">
+            <div ng-repeat-start="setting in settings" ng-show="setting.type == 'string'" class="form-group">
+                <label for="input{{$index}}" class="col-sm-2 control-label">{{setting.name}}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control input-sm" id="input{{$index}}" ng-model="setting.value">
+                </div>
+            </div>
+
+            <div ng-show="setting.type == 'select'" class="form-group">
+                <label for="input{{$index}}" class="col-sm-2 control-label">{{setting.name}}</label>
+                <div class="col-sm-10">
+                    <select ng-model="setting.value" class="form-control input-sm" id="input{{$index}}">
+                        <option ng-repeat="option in setting.options">{{option}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div ng-show="setting.type == 'list'" class="form-group">
+                <label class="col-sm-2 control-label">{{setting.name}}</label>
+                <h5 ng-show="setting.values.length == 0" class="col-sm-4">No entries exist</h5>
+                <br/>
+                <br/>
+
+                <div ng-repeat-start="value in setting.values" class="col-sm-9 col-sm-offset-1">
+                    <div ng-repeat-start="option in value" ng-show="option.type == 'string'" class="form-group">
+                        <label for="input{{$parent.$index}}.{{$index}}" class="col-sm-2 control-label">{{option.name}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control input-sm" id="input{{$parent.$index}}.{{$index}}" ng-model="option.value">
+                        </div>
+                    </div>
+
+                    <div ng-show="option.type == 'select'" class="form-group">
+                        <label for="input{{$parent.$index}}.{{$index}}" class="col-sm-2 control-label">{{option.name}}</label>
+                        <div class="col-sm-10">
+                            <select ng-model="option.value" class="form-control input-sm" id="input{{$parent.$index}}.{{$index}}">
+                                <option ng-repeat="o in option.options">{{o}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div ng-repeat-end ng-show="option.type == 'boolean'" class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="option.value"> {{option.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-repeat-end class="col-sm-9 col-sm-offset-1">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger btn-sm" ng-click="deleteValue(setting, value)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="setting.type == 'list'" class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success btn-sm" ng-click="addNested(setting)"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+                </div>
+            </div>
+
+            <div ng-repeat-end ng-show="setting.type == 'boolean'" class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="setting.value"> {{setting.name}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default btn-sm" ng-click="save()">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
