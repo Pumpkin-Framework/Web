@@ -2,3 +2,6 @@ node_modules
 *.ipr
 *.iml
 *.iws
+*.ids
+mailerconfig.js
+dbconfig.js
