@@ -11,6 +11,42 @@ div.jumbotron.mainjumbotron {
   margin-bottom: 0;
 }
 
-div.main-content div.content-card > h2 {
-  height: 35px;
+div.main-content {
+
+  div.content-card > h2 {
+    height: 35px;
+  }
+
+  div.online-players-container {
+    > div {
+      display: inline-block;
+
+      > div {
+        float: left;
+        margin: 0 5px 5px 0;
+        cursor: pointer;
+        overflow: auto;
+      }
+    }
+  }
+}
+
+div.map-card-container {
+  padding-left: 30px;
+
+  > a.thumbnail {
+    margin: 0 20px 20px 0;
+    float: left;
+    cursor: pointer;
+    text-decoration: none;
+
+    img {
+      height: 300px;
+      width: 350px;
+    }
+
+    div.caption {
+      text-align: center;
+    }
+  }
 }
