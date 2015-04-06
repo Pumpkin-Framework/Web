@@ -1,4 +1,3 @@
-var angular = require("angular");
 
 module.exports = angular.module("pumpkin.mappack.overview", [])
     .controller("MappackOverviewController", ["$scope", "$http", function($scope, $http){

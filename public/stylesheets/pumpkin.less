@@ -11,6 +11,19 @@ div.jumbotron.mainjumbotron {
   margin-bottom: 0;
 }
 
+div.center-margins {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.auto-width {
+  width: auto;
+}
+
+div.inline-block {
+  display: inline-block;
+}
+
 div.main-content {
 
   div.content-card > h2 {
@@ -49,4 +62,30 @@ div.map-card-container {
       text-align: center;
     }
   }
+}
+
+div.mappack-detail-container {
+
+  > div.col-md-8 > .toolbar {
+    @media (max-width: 992px) { //Small
+      margin-top: 20px;
+    }
+    @media (min-width: 992px) { //Normal
+      position: absolute;
+      right: 5px;
+      top: 25px;
+    }
+  }
+
+  > div.col-md-4 {
+    padding-top: 25px;
+
+    > img {
+      width: 100%;
+    }
+  }
+}
+
+div#mappack-desc-editor {
+  height: 450px;
 }

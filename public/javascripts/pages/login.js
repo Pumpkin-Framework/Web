@@ -1,4 +1,3 @@
-var angular = require("angular");
 
 module.exports = angular.module("pumpkin.login", [])
     .controller("LoginController", ["$scope", "$http", "$rootScope", "$location", function($scope, $http, $rootScope, $location){

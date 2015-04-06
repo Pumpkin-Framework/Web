@@ -1,4 +1,3 @@
-var angular = require("angular");
 
 module.exports = angular.module("pumpkin.index", ["ui.bootstrap"])
     .controller("HomeController", ["$scope", "$http", function($scope, $http){

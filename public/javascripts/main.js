@@ -1,7 +1,3 @@
-var angular = require("angular");
-require('angular-router-browserify')(angular);
-require("angular-bootstrap-npm");
-
 var indexPage = require("./pages/index");
 var mappackSettingsPage = require("./pages/mappack/settings");
 var newAccountPage = require("./pages/new-account");
@@ -12,6 +8,8 @@ var loginPage = require("./pages/login");
 
 angular.module("pumpkin", [
     "ngRoute",
+    "angulartics",
+    "angulartics.google.analytics",
     indexPage.name,
     loginPage.name,
     mappackSettingsPage.name,
@@ -22,12 +20,14 @@ angular.module("pumpkin", [
 ])
     .config(["$routeProvider", require("./routes")])
     .run(function($rootScope, $http, $location){
+        $rootScope.navbarCollapsed = false;
+
         $http.get('/api/session').success(function(data) {
             $rootScope.session = data;
         });
 
         $rootScope.logout = function(){
-            $http.delete('/api/session').success(function(data) {
+            $http.delete('/api/session').success(function(){
                 $rootScope.session = {exists: false};
                 $location.path("/");
             });

@@ -1,5 +1,17 @@
-<div class="container">
-    <div class="col-md-12">
-        <h2>{{mappack.name}}</h2>
+<div class="container mappack-detail-container">
+    <div class="col-md-8">
+        <h1>
+            {{mappack.name}}
+            <small>{{mappack.version}}</small>
+        </h1>
+        <b>by <a ng-repeat-start="a in mappack.authors" href="#/users/{{a.id}}">{{a.fullName}}</a><span ng-show="!$last" ng-repeat-end>, </span></b>
+        <div class="toolbar" ng-show="isAuthor">
+            <a class="btn btn-info" href="#/mappack/{{mappack.id}}/edit"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+            <button class="btn btn-info"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</button>
+        </div>
+        <div ng-include="mappack.descUrl"></div>
+    </div>
+    <div class="col-md-4">
+        <img class="thumbnail" ng-src="/api/mappack/{{mappack.id}}/logo.png"/>
     </div>
 </div>

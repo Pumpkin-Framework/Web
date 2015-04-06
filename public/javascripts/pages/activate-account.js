@@ -1,4 +1,3 @@
-var angular = require("angular");
 
 module.exports = angular.module("pumpkin.activateAccount", [])
     .controller("ActivateAccountController", ["$scope", "$http", "$routeParams", function($scope, $http, $routeParams){

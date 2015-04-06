@@ -1,4 +1,3 @@
-var angular = require("angular");
 
 module.exports = angular.module("pumpkin.mappack.settings", [])
     .controller("MappackSettingsController", ["$scope", "$routeParams", function($scope, $routeParams){
