@@ -1,6 +1,13 @@
 <div class="container">
     <div class="col-md-12">
-        <h1>Edit mappack description{{mappack.name}}</h1>
+        <h1>Edit mappack description for {{mappack.name}}</h1>
+        <div class="alert" ng-class="alert.cls" role="alert">
+            <strong>{{alert.head}}</strong> {{alert.desc}}
+        </div>
         <div id="mappack-desc-editor"></div>
+        <div class="pull-right">
+            <a class="btn btn-default" href="#/mappack/{{mappack.id}}"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back</a>
+            <button class="btn btn-info" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
+        </div>
     </div>
 </div>

@@ -11,14 +11,12 @@ module.exports = angular.module("pumpkin.newAccount", [])
         };
         $scope.account = {
             username: "",
-            fullName: "",
             email: "",
             password1: "",
             password2: ""
         };
         $scope.cls = {
             username: "",
-            fullName: "",
             email: "",
             password1: "",
             password2: ""
@@ -37,14 +35,6 @@ module.exports = angular.module("pumpkin.newAccount", [])
                 });
             }else{
                 $scope.cls.username = "has-error";
-            }
-        });
-        $scope.$watch("account.fullName", function(newVal){
-            if(newVal.length == 0) return;
-            if(fullNameRegex.test(newVal)){
-                $scope.cls.fullName = "has-success";
-            }else{
-                $scope.cls.fullName = "has-error";
             }
         });
         $scope.$watch("account.password1", function(newVal){
@@ -110,12 +100,6 @@ module.exports = angular.module("pumpkin.newAccount", [])
                     $scope.alert.desc = "Your email address is not valid";
                     return;
                 }
-                if(!fullNameRegex.test($scope.account.fullName)){
-                    $scope.alert.cls = "alert-warning";
-                    $scope.alert.head = "Oh snap!";
-                    $scope.alert.desc = "Your full name is not valid";
-                    return;
-                }
                 if($scope.account.password1.length < 8){
                     $scope.alert.cls = "alert-warning";
                     $scope.alert.head = "Oh snap!";
@@ -132,7 +116,6 @@ module.exports = angular.module("pumpkin.newAccount", [])
                 $http.post("/api/account", {
                     username: $scope.account.username,
                     password: $scope.account.password1,
-                    fullName: $scope.account.fullName,
                     email: $scope.account.email
                 }).success(function(data){
                     if(data.success){

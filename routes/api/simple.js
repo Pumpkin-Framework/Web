@@ -1,74 +1,73 @@
-var express = require('express');
-var router = express.Router();
+module.exports = function(env){
+    function add(path){
+        env.filestore.add(path, function(err, id){
+            console.log(path + ": " + id);
+        });
+    }
 
-router.get("/online-players", function(req, res) {
-    res.send([
-        {
-            id: 0,
-            fullName: "Jeffrey Kog",
-            mcUsername: "jk_5"
-        },
-        {
-            id: 1,
-            fullName: "Martijn Reening",
-            mcUsername: "PostVillageCore"
-        },
-        {
-            id: 2,
-            fullName: "Matthias van de Meent",
-            mcUsername: "mattashii_"
-        },
-        {
-            id: 3,
-            fullName: "Maurice van der Ploeg",
-            mcUsername: "zM600D"
-        },
-        {
-            id: 4,
-            fullName: "Thomas Nevels",
-            mcUsername: "ThimThom"
-        },
-        {
-            id: 5,
-            fullName: "Marit Kog",
-            mcUsername: "Clank26"
-        },
-        {
-            id: 6,
-            fullName: "Jelte Koops",
-            mcUsername: "jeltexx"
-        },
-        {
-            id: 7,
-            fullName: "Jorick Ensing",
-            mcUsername: "SeanyJo"
-        },
-        {
-            id: 8,
-            fullName: "Carel Botterman",
-            mcUsername: "carel538"
-        },
-        {
-            id: 9,
-            fullName: "Maurits Botterman",
-            mcUsername: "maurits538"
-        },
-        {
-            id: 10,
-            fullName: "Wouter Hagedoorn",
-            mcUsername: "wouter"
-        },
-        {
-            id: 11,
-            fullName: "Notch",
-            mcUsername: "notch"
-        },
-        {
-            id: 12,
-            fullName: "Je Moeder",
-            mcUsername: "jemoeder"
-        }
-    ]);
-});
+    env.router.get("/api/online-players", function(req, res) {
+        res.send([
+            {
+                id: 0,
+                username: "jk_5"
+            },
+            {
+                id: 1,
+                username: "PostVillageCore"
+            },
+            {
+                id: 2,
+                username: "mattashii_"
+            },
+            {
+                id: 3,
+                username: "zM600D"
+            },
+            {
+                id: 4,
+                username: "ThimThom"
+            },
+            {
+                id: 5,
+                username: "Clank26"
+            },
+            {
+                id: 6,
+                username: "jeltexx"
+            },
+            {
+                id: 7,
+                username: "SeanyJo"
+            },
+            {
+                id: 8,
+                username: "carel538"
+            },
+            {
+                id: 9,
+                username: "maurits538"
+            },
+            {
+                id: 10,
+                username: "wouter"
+            },
+            {
+                id: 11,
+                username: "notch"
+            },
+            {
+                id: 12,
+                username: "jemoeder"
+            }
+        ]);
+    });
 
-module.exports = router;
+    env.router.post("/api/upload", function(req, res){
+        console.log(req.files);
+        res.send("ok");
+    });
+
+    env.router.get("/api/file/:id", function(req, res) {
+        res.sendFile(env.filestore.getPath(req.params.id));
+    });
+};

@@ -8,9 +8,9 @@
     <div class="col-12 online-players-container">
         <h2>Currently Online</h2>
         <div>
-            <div ng-repeat="p in onlinePlayers" tooltip-placement="bottom" tooltip="{{p.fullName}}">
-                <a href="#/player/{{p.id}}">
-                    <img ng-src="https://minotar.net/helm/{{p.mcUsername}}/64.png"/>
+            <div ng-repeat="p in onlinePlayers" tooltip-placement="bottom" tooltip="{{p.username}}">
+                <a href="#/user/{{p.username}}">
+                    <img ng-src="https://minotar.net/helm/{{p.username}}/64.png"/>
                 </a>
             </div>
         </div>

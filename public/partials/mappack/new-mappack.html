@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="col-12">
+        <h1>Create a new mappack</h1>
+        <p>You are just a few steps away from creating a new awesome game that everyone can play. That feels exciting, right?</p>
+        <p>We only need to know a few details about the mappack. You can upload a world or just use a blank one. In that case, you can join the game server, load the new mappack up in editor mode and start building.</p>
+        <form class="form-horizontal well no-bottom-padding">
+            <div class="form-group">
+                <label for="nameInput" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input placeholder="Enter the name for your mappack" type="text" class="form-control" id="nameInput" ng-model="mappack.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">World Generator</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="mappack.world.generator">
+                        <option value="overworld">Overworld</option>
+                        <option value="nether">Nether</option>
+                        <option value="end">End</option>
+                        <option value="flat">Flat</option>
+                        <option value="large-biomes">Large Biomes</option>
+                        <option value="amplified">Amplified</option>
+                        <option value="void">Void</option>
+                    </select>
+                    <p style="margin-top:10px;" ng-show="mappack.world.generator == 'flat'">Flat generator options</p>
+                    <input class="form-control" ng-show="mappack.world.generator == 'flat'" ng-model="mappack.world.flatOptions" type="text" placeholder="Flat generator settings"/>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="mappack.world.upload">
+                            Upload your own world
+                        </label>
+                        <p style="margin-top:10px;" ng-show="mappack.world.upload == true">Please upload a zipped folder containing at least level.dat and the regions folder</p>
+                        <input type="file" ng-model="mappack.world.uploadFile" ng-show="mappack.world.upload == true"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default btn-sm" ng-click="create()">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

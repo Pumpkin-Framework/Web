@@ -1,3 +1,3 @@
 module.exports = {
-    connstring: "postgres://postgres:laserint@172.17.0.3/pumpkin"
+    connstring: "postgres://postgres:laserint@srv1.network.jk-5.nl/pumpkin"
 };

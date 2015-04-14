@@ -66,14 +66,20 @@ div.map-card-container {
 
 div.mappack-detail-container {
 
-  > div.col-md-8 > .toolbar {
-    @media (max-width: 992px) { //Small
-      margin-top: 20px;
+  > div.col-md-8 {
+    > hr {
+      margin: 12px 0;
     }
-    @media (min-width: 992px) { //Normal
-      position: absolute;
-      right: 5px;
-      top: 25px;
+
+    > div.toolbar {
+      @media (max-width: 992px) { //Small
+        margin-top: 20px;
+      }
+      @media (min-width: 992px) { //Normal
+        position: absolute;
+        right: 5px;
+        top: 25px;
+      }
     }
   }
 
@@ -82,6 +88,12 @@ div.mappack-detail-container {
 
     > img {
       width: 100%;
+    }
+  }
+
+  div#mappack-description-markdown-container {
+    img {
+      max-width: 100%;
     }
   }
 }

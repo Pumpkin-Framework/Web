@@ -4,12 +4,15 @@
             {{mappack.name}}
             <small>{{mappack.version}}</small>
         </h1>
-        <b>by <a ng-repeat-start="a in mappack.authors" href="#/users/{{a.id}}">{{a.fullName}}</a><span ng-show="!$last" ng-repeat-end>, </span></b>
+        <b>by <a ng-repeat-start="a in mappack.authors" href="#/user/{{a.username}}">{{a.username}}</a><span ng-show="!$last" ng-repeat-end>, </span></b>
         <div class="toolbar" ng-show="isAuthor">
             <a class="btn btn-info" href="#/mappack/{{mappack.id}}/edit"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
             <button class="btn btn-info"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</button>
         </div>
-        <div ng-include="mappack.descUrl"></div>
+        <hr/>
+        <div ng-include="mappack.descUrl" id="mappack-description-markdown-container"></div>
+        <small>Last edited on {{mappack.updated | date:'EEEE d MMMM HH:mm:ss'}} by <a href="#/user/{{mappack.descriptionEditor.username}}">{{mappack.descriptionEditor.username}}</a></small>
+        <br/>
     </div>
     <div class="col-md-4">
         <img class="thumbnail" ng-src="/api/mappack/{{mappack.id}}/logo.png"/>
