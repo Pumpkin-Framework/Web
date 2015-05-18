@@ -7,11 +7,12 @@ var bodyParser = require('body-parser');
 var browserify = require('browserify-middleware');
 var clientSessions = require("client-sessions");
 var http = require("http");
+var events = require("events");
 var WebSocketServer = require("ws").Server;
 
 var app = express();
 
-var env = {};
+var env = new events.EventEmitter();
 env.query = require("./database");
 env.mail = require("./mailer");
 env.filestore = require("./filestore");
@@ -66,14 +67,15 @@ var io = require("socket.io")(server, {
 
 env.io = io;
 env.router = router;
+env.gameserver = {};
 
 require('./routes/api/sessions')(env);
 require('./routes/api/account')(env);
 require('./routes/api/mappack')(env);
 require('./routes/api/simple')(env);
 
-//var wss = new WebSocketServer({server: server, path: "/gameserver"});
-//require("./gameserver")(wss);
+var wss = new WebSocketServer({server: server, path: "/gameserver"});
+require("./gameserver")(wss, env);
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);

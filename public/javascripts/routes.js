@@ -7,6 +7,7 @@ module.exports = function(router){
     router.when("/mappack/:id", {templateUrl: "/partials/mappack/mappack.html", controller: "MappackInfoController"});
     router.when("/mappack/:id/edit", {templateUrl: "/partials/mappack/edit-desc.html", controller: "MappackEditDescriptionController"});
     router.when("/mappack/:id/settings", {templateUrl: "/partials/mappack/settings.html", controller: "MappackSettingsController"});
+    router.when("/mappack/:id/settings/worlds", {templateUrl: "/partials/mappack/settings/worlds.html", controller: "MappackWorldsSettingsController"});
     router.when("/mappacks", {templateUrl: "/partials/mappack/overview.html", controller: "MappackOverviewController"});
     router.when("/user/:username", {templateUrl: "/partials/player.html", controller: "PlayerInfoController"});
     router.otherwise({redirectTo: "/"});

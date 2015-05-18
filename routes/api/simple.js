@@ -5,61 +5,16 @@ module.exports = function(env){
         });
     }
 
+    env.on("gs-player-join", function(player){
+        env.io.sockets.emit("player-join", player);
+    });
+
+    env.on("gs-player-leave", function(player){
+        env.io.sockets.emit("player-leave", player);
+    });
+
     env.router.get("/api/online-players", function(req, res) {
-        res.send([
-            {
-                id: 0,
-                username: "jk_5"
-            },
-            {
-                id: 1,
-                username: "PostVillageCore"
-            },
-            {
-                id: 2,
-                username: "mattashii_"
-            },
-            {
-                id: 3,
-                username: "zM600D"
-            },
-            {
-                id: 4,
-                username: "ThimThom"
-            },
-            {
-                id: 5,
-                username: "Clank26"
-            },
-            {
-                id: 6,
-                username: "jeltexx"
-            },
-            {
-                id: 7,
-                username: "SeanyJo"
-            },
-            {
-                id: 8,
-                username: "carel538"
-            },
-            {
-                id: 9,
-                username: "maurits538"
-            },
-            {
-                id: 10,
-                username: "wouter"
-            },
-            {
-                id: 11,
-                username: "notch"
-            },
-            {
-                id: 12,
-                username: "jemoeder"
-            }
-        ]);
+        res.send({success: true, onlinePlayers: env.gameserver.onlinePlayers});
     });
 
     env.router.post("/api/upload", function(req, res){

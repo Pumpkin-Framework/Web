@@ -1,5 +1,5 @@
 module.exports = angular.module("pumpkin.mappack.new", ["ur.file"])
-    .controller("NewMappackController", ["$scope", "$http", function($scope, $http){
+    .controller("NewMappackController", ["$scope", "$http", "$location", function($scope, $http, $location){
         $scope.mappack = {
             name: "",
             world: {
@@ -10,15 +10,8 @@ module.exports = angular.module("pumpkin.mappack.new", ["ur.file"])
             }
         };
         $scope.create = function(){
-            //TODO: input validation
-            $http.post("/api/mappack", {mappack: {
-                name: $scope.mappack.name,
-                world: {
-                    type: $scope.mappack.world.type,
-                    generator: $scope.mappack.world.type == "generated" ? $scope.mappack.world.generator : undefined
-                }
-            }}).success(function(data){
-                //TODO
+            $http.post("/api/mappack", {name: $scope.mappack.name}).success(function(data){
+                $location.path("/mappack/" + data.mappack.id + "/settings");
             });
 
             /*var xhr = new XMLHttpRequest();

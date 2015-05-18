@@ -23,19 +23,11 @@ module.exports = function(env){
     env.router.post("/api/mappack/", function(req, res) {
         var userid = req.env.requireSession();
         if(!userid) return;
-        //TODO: validate generator settings
-        req.env.query("INSERT INTO mappacks (name, description, description_by, description_updated) VALUES($1, 'No description available yet', $2, NOW()) RETURNING id", [req.body.mappack.name, userid], function(result){
+        req.env.query("INSERT INTO mappacks (name, description, description_by, description_updated) VALUES($1, 'No description available yet', $2, NOW()) RETURNING id", [req.body.name, userid], function(result){
             if(result.rows.length == 1){
                 var mpid = result.rows[0].id;
-                req.env.query("INSERT INTO mappack_author(mappack_id, author_id, role) VALUES($1, $2, 'Creating the mappack')", [mpid, userid], function(result){
-                    var world = req.body.mappack.world;
-                    var generator = "void";
-                    if(world.type == "generated"){
-                        generator = world.generator;
-                    }
-                    req.env.query("INSERT INTO mappack_world(map_id, name, generator) VALUES($1, 'default', $2) RETURNING id", [mpid, generator], function(result){
-                        res.send({success: true, mappack: {id: mpid}});
-                    });
+                req.env.query("INSERT INTO mappack_author (mappack_id, author_id, role) VALUES($1, $2, 'Creating the mappack')", [mpid, userid], function(result) {
+                    res.send({success: true, mappack: {id: mpid}});
                 });
             }else{
                 res.send({success: false, error: "Database error"});

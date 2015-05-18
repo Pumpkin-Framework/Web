@@ -7,7 +7,7 @@
         <b>by <a ng-repeat-start="a in mappack.authors" href="#/user/{{a.username}}">{{a.username}}</a><span ng-show="!$last" ng-repeat-end>, </span></b>
         <div class="toolbar" ng-show="isAuthor">
             <a class="btn btn-info" href="#/mappack/{{mappack.id}}/edit"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
-            <button class="btn btn-info"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</button>
+            <a class="btn btn-info" href="#/mappack/{{mappack.id}}/settings"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</a>
         </div>
         <hr/>
         <div ng-include="mappack.descUrl" id="mappack-description-markdown-container"></div>
