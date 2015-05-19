@@ -1,0 +1,75 @@
+
+header.navbar
+  background-color navbar-color
+  position relative
+  box-shadow 0 1px 2px rgba(0,0,0,0.05)
+  height navbar-height
+
+  > div
+    height 100%
+    position relative
+
+    > div
+      max-width content-width
+      margin 0 auto
+      padding 0 20px
+
+      a
+        white-space nowrap
+        transition 0.2s ease
+        color text-color
+
+        &:hover
+          color link-color
+
+      > a
+        float left
+        display inline-block
+        height 40px
+        line-height 40px
+        padding 12px 15px
+
+        > span.logo
+          height 40px
+          width 40px
+          display inline-block
+          margin-right 4px
+          background-size cover
+          background-image url("/static/logo.png")
+
+        > span.title
+          font-size 16px
+          display inline-block
+          vertical-align top
+          font-weight 600
+
+      > nav.left
+        float left
+
+      > nav.right
+        float right
+
+      > nav
+        height 64px
+        line-height 64px
+        padding 0 15px
+
+        > a
+          float left
+          display block
+          padding 0 15px
+
+        > a.profile-link
+          padding 12px 15px
+          height 40px
+          line-height 40px
+
+          > img
+            width 40px
+            height 40px
+            margin-right 8px
+            float left
+
+          > i.fa
+            line-height 40px
+            float left

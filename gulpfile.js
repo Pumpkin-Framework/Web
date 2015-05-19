@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
 var through2 = require('through2');
 var sourcemaps = require('gulp-sourcemaps');
@@ -45,7 +46,7 @@ gulp.task('copy:html', function () {
 
 // Copies static files
 gulp.task('copy:static', function () {
-    return gulp.src(['./src/static/**/*'])
+    return gulp.src(['./src/static/**/*', './src/img/**/*'])
         .pipe(gulp.dest('./build/static/'))
 });
 
