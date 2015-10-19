@@ -13,5 +13,6 @@
 /// <reference path='controllers/MappackCreateController.ts' />
 /// <reference path='controllers/AccountActivateController.ts' />
 /// <reference path='controllers/AccountCreateController.ts' />
+/// <reference path='controllers/IssuesOverviewController.ts' />
 /// <reference path='interfaces/IRootScope.ts' />
 /// <reference path='main.ts' />

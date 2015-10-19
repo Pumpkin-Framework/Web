@@ -10,6 +10,7 @@ var rename = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
 var del = require('del');
 var runSeq = require('run-sequence');
+var rsync = require('gulp-rsync');
 
 // Stylus includes
 var nib = require('nib');
@@ -97,7 +98,30 @@ gulp.task('build:ts-dev', function () {
         .pipe(gulp.dest('./build/static'));
 });
 
-gulp.task('build-dev', ['copy:html', 'copy:static', 'build:styl-dev', 'build:ts-dev']);
+gulp.task('deploy', function() {
+    return gulp.src(['./build/**/*'])
+        .pipe(rsync({
+            destination: '/var/www/pumpkin',
+            root: './build/',
+            hostname: '10.2.0.2',
+            username: 'root',
+            incremental: true,
+            progress: false,
+            relative: true,
+            emptyDirectories: true,
+            recursive: true,
+            clean: true,
+            exclude: ['.DS_Store']
+        }));
+});
+
+gulp.task('build-dev', function(cb){
+    runSeq(
+        ['copy:html', 'copy:static', 'build:styl-dev', 'build:ts-dev'],
+        'deploy',
+        cb
+    );
+});
 
 // Rebuild when files are changed
 gulp.task('dev', ['build-dev'], function () {

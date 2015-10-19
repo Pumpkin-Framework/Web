@@ -1,0 +1,49 @@
+<div class="block">
+    <div class="content">
+        <h1>Issues</h1>
+
+        <ul class="issues-list">
+            <li ng-repeat="issue in issues">
+                <div class="type">
+                    <a href="javascript:void(0)">
+                        <span class="octicon" ng-class="{'octicon-issue-closed':issue.closed,'octicon-issue-opened':!issue.closed}"></span>
+                    </a>
+                </div>
+                <div class="title">
+                    <a href="javascript:void(0)" class="muted-link">
+                        {{issue.subject}}
+                    </a>
+                    <span class="labels">
+                        <a href="javascript:void(0)" style="background-color: #050085; color: #fff;">label</a>
+                        <a href="javascript:void(0)" style="background-color: #fbca04; color: #332900;">another label</a>
+                    </span>
+                    <div class="meta">
+                        <span class="opened-by">
+                            #{{issue.id}} opened <time datetime="2015-05-25T00:54:43Z" is="relative-time" title="May 25, 2015, 2:54 AM GMT+2">a day ago</time> by
+                            <a class="muted-link" href="javascript:void(0)">jk-5</a>
+                        </span>
+                        <span class="milestone">
+                            <a class="milestone-link" href="javascript:void(0)">
+                                <span class="octicon octicon-milestone"></span>
+                                <span>1.1.0</span>
+                            </a>
+                        </span>
+                        <span class="progress">
+                            <span class="octicon octicon-checklist"></span>
+                            <span class="counts">1 of 3</span>
+                            <span class="progress-bar"><span style="width: 33.333%"></span></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="avatar">
+                    <a href="javascript:void(0)">
+                        <img alt="@jk-5" height="16" width="16" src="https://minotar.net/helm/jk_5/32.png">
+                    </a>
+                </div>
+                <div class="comments">
+                    <a href="javascript:void(0)" class="muted-link"><span class="octicon octicon-comment"></span> 1</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
