@@ -1,20 +1,21 @@
-<div class="container mappack-detail-container">
-    <div class="col-md-8">
-        <h1>
-            {{mappack.name}}
-            <small>{{mappack.version}}</small>
-        </h1>
-        <b>by <a ng-repeat-start="a in mappack.authors" href="#/user/{{a.username}}">{{a.username}}</a><span ng-show="!$last" ng-repeat-end>, </span></b>
-        <div class="toolbar" ng-show="isAuthor">
-            <a class="btn btn-info" href="#/mappack/{{mappack.id}}/edit"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
-            <a class="btn btn-info" href="#/mappack/{{mappack.id}}/settings"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</a>
+<h1 class="mappack-title">
+    {{mappack.name}}
+    <small>{{mappack.version}}</small>
+</h1>
+<b class="mappack-by">by <a ng-repeat-start="a in mappack.authors" href="/user/{{a.username}}">{{a.username}}</a><span ng-if="!$last" ng-repeat-end>, </span></b>
+<div class="block">
+    <div class="content">
+        <div class="mappack-details">
+            <div class="toolbar"><!-- ng-show="isAuthor">-->
+                <a class="btn btn-info" href="/mappack/{{mappack.id}}/edit">Edit</a>
+                <a class="btn btn-info" href="/mappack/{{mappack.id}}/settings">Settings</a>
+            </div>
+            <div ng-include="mappack.descUrl" id="mappack-description-markdown-container"></div>
+            <hr class="mappack-desc-seperator">
+            <small>Last edited on {{mappack.updated | date:'EEEE d MMMM HH:mm:ss'}} by <a href="/user/{{mappack.descriptionEditor.username}}">{{mappack.descriptionEditor.username}}</a></small>
         </div>
-        <hr/>
-        <div ng-include="mappack.descUrl" id="mappack-description-markdown-container"></div>
-        <small>Last edited on {{mappack.updated | date:'EEEE d MMMM HH:mm:ss'}} by <a href="#/user/{{mappack.descriptionEditor.username}}">{{mappack.descriptionEditor.username}}</a></small>
-        <br/>
-    </div>
-    <div class="col-md-4">
-        <img class="thumbnail" ng-src="/api/mappack/{{mappack.id}}/logo.png"/>
+        <div class="mappack-images">
+            <img class="thumbnail" ng-src="/api/mappack/{{mappack.id}}/logo.png"/>
+        </div>
     </div>
 </div>

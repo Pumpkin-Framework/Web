@@ -6,8 +6,20 @@
   col(2/3, $gutter: 3)
 
 main
-  width content-width
-  margin 0 auto
+  margin-right auto
+  margin-left auto
+  padding-left main-gutter-width
+  padding-right main-gutter-width
+
+  @media (min-width: screen-small-min) {
+    width container-small
+  }
+  @media (min-width: screen-medium-min) {
+    width container-medium
+  }
+  @media (min-width: screen-large-min) {
+    width container-large
+  }
 
 .block:last-child
   margin-bottom 40px
@@ -32,6 +44,30 @@ main
       margin-bottom 0
     > :first-child
       margin-top 0
+
+    h1
+      font-size 28px
+      line-height 28px
+      margin-bottom 15px
+      margin-top 15px
+
+    h2
+      font-size 24px
+      line-height 24px
+      margin-bottom 7px
+      margin-top 10px
+
+    h3
+      font-size 20px
+      line-height 20px
+      margin-bottom 7px
+      margin-top 10px
+
+    h4
+      font-size 16px
+      line-height 16px
+      margin-bottom 7px
+      margin-top 10px
 
     a:hover
       text-decoration underline

@@ -1,0 +1,40 @@
+
+h1.mappack-title
+  margin-bottom 5px
+
+b.mappack-by
+  margin-left 5px
+  margin-bottom 10px
+  display block
+
+div.mappack-details
+  width 64.348%
+  margin-right 2%
+  display inline-block
+  vertical-align top
+  position relative
+
+  > div.toolbar
+    @media (max-width: 992px) { //Small
+      margin-bottom 20px
+    }
+    @media (min-width: 992px) { //Normal
+      position absolute
+      right 0
+      top 0
+    }
+
+  > div#mappack-description-markdown-container > *:first-child
+    margin-top 0
+
+hr.mappack-desc-seperator
+  margin-bottom 3px !important
+
+div.mappack-images
+  width 33.3333%
+  display inline-block
+
+  > img:last-child
+    margin-bottom 0 !important
+
+
