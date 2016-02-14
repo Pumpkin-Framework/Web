@@ -1,10 +1,18 @@
+<h1>Mappacks</h1>
+<div class="block">
+    <div class="content">
+
+    </div>
+</div>
+
+
 <div class="container">
     <div class="col-md-12">
         <h1>Mappacks</h1>
     </div>
 </div>
 <div class="container map-card-container">
-    <a ng-repeat="mappack in mappacks" href="#/mappack/{{mappack.id}}" class="thumbnail">
+    <a ng-repeat="mappack in mappacks" href="/mappack/{{mappack.id}}" class="thumbnail">
         <img ng-src="/api/mappack/{{mappack.id}}/logo.png"/>
         <div class="caption">
             <h3>{{mappack.name}}</h3>

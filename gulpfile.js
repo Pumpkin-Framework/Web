@@ -101,9 +101,9 @@ gulp.task('build:ts-dev', function () {
 gulp.task('deploy', function() {
     return gulp.src(['./build/**/*'])
         .pipe(rsync({
-            destination: '/var/www/pumpkin',
+            destination: '/var/www/pumpkin.jk-5.nl',
             root: './build/',
-            hostname: '10.2.0.2',
+            hostname: '10.2.1.2',
             username: 'root',
             incremental: true,
             progress: false,
@@ -111,6 +111,7 @@ gulp.task('deploy', function() {
             emptyDirectories: true,
             recursive: true,
             clean: true,
+            silent: true,  //This fixes a crash when gulp's log is redirected to a file
             exclude: ['.DS_Store']
         }));
 });

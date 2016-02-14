@@ -37,7 +37,7 @@ var a = angular.module('pumpkin', [
         router.when("/issues", {templateUrl: "/static/partials/issues/overview.html", controller: "pumpkinWeb.IssuesOverviewController"});
         router.otherwise({redirectTo: "/"});
 
-        //location.html5Mode(true);
+        location.html5Mode(true);
     }]).run(["$rootScope", "$http", "$location", function($rootScope: pumpkinWeb.IRootScope, $http: ng.IHttpService, $location: ng.ILocationService){
         $rootScope.navbarCollapsed = false;
 
