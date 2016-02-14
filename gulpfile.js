@@ -9,6 +9,7 @@ var rename = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
 var del = require('del');
 var runSeq = require('run-sequence');
+var rsync = require('gulp-rsync');
 
 // Stylus includes
 var nib = require('nib');
