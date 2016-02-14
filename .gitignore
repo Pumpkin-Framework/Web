@@ -7,3 +7,4 @@ mailerconfig.js
 dbconfig.js
 build
 filestore
+lib/config.json
