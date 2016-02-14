@@ -96,7 +96,31 @@ gulp.task('build:ts-dev', function () {
         .pipe(gulp.dest('./build/static'));
 });
 
-gulp.task('build-dev', ['copy:html', 'copy:static', 'build:styl-dev', 'build:ts-dev']);
+gulp.task('deploy', function() {
+    return gulp.src(['./build/**/*'])
+        .pipe(rsync({
+            destination: '/var/www/pumpkin.jk-5.nl',
+            root: './build/',
+            hostname: '10.2.1.2',
+            username: 'root',
+            incremental: true,
+            progress: false,
+            relative: true,
+            emptyDirectories: true,
+            recursive: true,
+            clean: true,
+            silent: true,  //This fixes a crash when gulp's log is redirected to a file
+            exclude: ['.DS_Store']
+        }));
+});
+
+gulp.task('build-dev', function(cb){
+    runSeq(
+        ['copy:html', 'copy:static', 'build:styl-dev', 'build:ts-dev'],
+        'deploy',
+        cb
+    );
+});
 
 // Rebuild when files are changed
 gulp.task('dev', ['build-dev'], function () {
